@@ -2,13 +2,17 @@ provider "aws" {
   region = "us-west-1"
 }
 
-###### you need to get VPC ID data from VPC workspace and use it to create DNS zones ####
+###### you need to get VPC ID data from VPC workspace and use it to create DNS resources ####
 
-// use terraform_remote_state to get data from VPC workspace
+// HINT:
 
-// use locals{} to transform the data and insert it to dns_entry variable
+# 1 use data terraform_remote_state {} to get data from VPC workspace
 
-// use dns module and pass the modifed dns_entry variable to provision DNS resources
+# 2 use locals{} to transform the data and insert it to dns_entry variable
+#   - output data type from VPC workspaces is map. you can use function values to get value from this map
+#   - to insert data to dns_entry variable, you can use for loop + merge + conditional expressions
+
+# 3 use dns module from TF cloud registry to create dns resources based on data from #2
 
 
 
